@@ -1,19 +1,20 @@
 const express=require('express');
 const route=express.Router();
-const controller=require('./controller');
-route.post("/getDataFromXlsx",controller.getDataInUrl)
-route.post("/createUser",controller.createUser)
-route.post("/getDataForCrud",controller.fetchDataFromUser)
-route.put("/updateData",controller.updateTheUserData)
-route.delete("/deleteData",controller.deleteUserData)
-route.post("/createPolicy",controller.createPolicy)
-route.post("/createAccount",controller.createAccount);
-route.put("/updatePolicyData",controller.updateThePolicyData)
-route.delete("/deleteThePolicyData",controller.deleteThePolicyData)
-route.get("/fetchDataFromAccount",controller.fetchDataFromAccount)
-route.put("/updateTheAccountData",controller.updateTheAccountData)
-route.post("/createAgent",controller.createAgent);
-route.post("/createLob",controller.createLob);
-route.post("/createCarrier",controller.createCarrier)
-route.delete("/deleteTheAccountData",controller.deleteTheAccountData)
+const accountController=require('../assigment/controller/accountController');
+const  userController=require('../assigment/controller/userController');
+const policyController=require('../assigment/controller/policyController')
+const fileUpload=require('../assigment/controller/fileUploading')
+route.post("/getDataFromXlsx",fileUpload.uploadTheXlsxFile)
+route.post("/createUser",userController.createUser)
+route.post("/getDataForCrud",userController.fetchDataFromUser)
+route.put("/updateData",userController.updateTheUserData)
+route.delete("/deleteData",userController.deleteUserData)
+route.post("/createAccount",accountController.createAccount);
+route.put("/fetchDataFromAccount",accountController.fetchDataFromAccount)
+route.delete("/deleteThePolicyData",accountController.deleteAccountData)
+route.get("/updateTheAccountData",accountController.updateTheUserData)
+route.put("/createThePolicyData",policyController.createPolicy)
+route.post("/updateThePolicyData",policyController.updateThePolicyData);
+route.post("/fetchThePolicyData",policyController.fetchDataFromPolicy);
+route.post("/createCarrier",policyController.deleteThePolicyData)
 module.exports=route;

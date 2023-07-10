@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   userType: { type: String,required:true},
+  userAccount: {
+    type: mongoose.Types.ObjectId,
+    ref: "UserAccount"
+   },
   gender: { type: String},
   firstName: { type: String,required:true},
   city: { type: String,require:true},

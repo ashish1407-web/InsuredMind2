@@ -14,13 +14,43 @@ const policySchema = new mongoose.Schema({
   policy_type: { 
     type: String, 
     required: true,
-    enum: ['Single', 'Package']
   },
-  policy_start_date: { type: Date},
-  policy_end_date: { type: Date},
-  csr: { type: String,required:true},
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, 
-  isDeleted:{type:Boolean,default:false}
+  policy_start_date:{
+    type: Date
+  },
+  policy_end_date: { 
+    type: Date
+  },
+  csr: { type: String,
+    required:true
+  },
+  user: { type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User'
+  }, 
+  agent:{type:mongoose.Schema.Types.ObjectId,
+    ref:'Agent'
+  },
+  isDeleted:{
+    type:Boolean,
+    default:false
+  },
+  policyNumber: {
+    type: String,
+    unique: true,
+    required: true
+  },
 });
 const Policy = mongoose.model('Policy', policySchema);
 module.exports = Policy;
+
+
+
+
+
+
+
+
+
+
+
+
